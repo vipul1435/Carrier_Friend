@@ -35,3 +35,10 @@ body,
 .user-pad::-webkit-scrollbar-thumb:hover {
   background: #606060; 
 }
+
+.CodeMirror{
+  width: 100%;
+  min-height:97%;
+  padding-top: 10px;
+  font-size: 16px;
+}

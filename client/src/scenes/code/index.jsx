@@ -1,37 +1,24 @@
-import { Box, Typography, TextField, Divider, Button, Snackbar ,Alert } from '@mui/material'
+import { Box, Typography, TextField, Divider, Button } from '@mui/material'
 import React, { useState } from 'react'
 import logo from 'assets/logo.png'
 import { v4 as uuidv4 } from 'uuid'
 import { useNavigate } from 'react-router-dom'
+import {toast} from 'react-toastify'
 const Code = () => {
   const navigate  = useNavigate();
   const [RoomId, setRoomId] = useState("");
   const [Name, setName] = useState("");
-  const [msg, setMsg] = useState("");
-  const [type, setType] = useState("success");
   const creteNewRoom = () => {
     const id = uuidv4();
     setRoomId(id);
-    toast("Room Created Successfully","success");
+    toast.success('Room created Successfully')
   }
-  const [open, setOpen] = React.useState(false);
-  const toast = (msg, type) =>{
-    setMsg(msg);
-    setOpen(true);
-    setType(type);
-  }
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
 
-    setOpen(false);
-  };
   const handelClick = () => {
     if(Name.length > 0 && RoomId.length > 0){
       navigate(`/room/${RoomId}`, { state: { Name: Name } });
     } else {
-      toast("Please Enter Valid Details","error");
+      toast.error('Enter valid Detail')
     }
   }
   return (
@@ -45,11 +32,6 @@ const Code = () => {
         bgcolor: '#1c1e29',
       }
     }>
-      <Snackbar anchorOrigin={{vertical:'bottom',horizontal:'right'}} open={open} autoHideDuration={2000} onClose={handleClose} >
-      <Alert onClose={handleClose} severity={type} sx={{ width: '100%' }}>
-          {msg}
-        </Alert>
-      </Snackbar>
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
