@@ -1,10 +1,11 @@
-import { Box, Typography, TextField, Divider, Button } from '@mui/material'
+import { Box, Typography, TextField, Divider, Button, useTheme } from '@mui/material'
 import React, { useState } from 'react'
 import logo from 'assets/logo.png'
 import { v4 as uuidv4 } from 'uuid'
 import { useNavigate } from 'react-router-dom'
 import {toast} from 'react-toastify'
 const Code = () => {
+  const theme = useTheme();
   const navigate  = useNavigate();
   const [RoomId, setRoomId] = useState("");
   const [Name, setName] = useState("");
@@ -16,7 +17,7 @@ const Code = () => {
 
   const handelClick = () => {
     if(Name.length > 0 && RoomId.length > 0){
-      navigate(`/room/${RoomId}`, { state: { Name: Name } });
+      navigate(`/room/${RoomId}`, { state: { Name: Name }, replace:true });
     } else {
       toast.error('Enter valid Detail')
     }
@@ -29,7 +30,7 @@ const Code = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        bgcolor: '#1c1e29',
+        bgcolor: theme.palette.code.main,
       }
     }>
       <Box sx={{

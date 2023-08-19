@@ -7,7 +7,7 @@ import 'codemirror/mode/javascript/javascript'
 import 'codemirror/addon/edit/closetag';
 import 'codemirror/addon/edit/closebrackets';
 import ACTIONS from 'socket/Actions';
-
+import EditorNav from './EditorNav';
 const Editor = ({socketRef,RoomId,onCodeChange}) => {
     const editorRef = useRef();
     useEffect(()=>{
@@ -58,7 +58,7 @@ const Editor = ({socketRef,RoomId,onCodeChange}) => {
     <Box display='flex' flexGrow='1' flexDirection='column'
     >
         <Box display='flex' justifyContent='center' flexDirection='column' sx={{bgcolor:'white', height:'40px'}} >
-            Select a file to edit
+            <EditorNav/>
         </Box>
         <Box overflow='hidden' display='flex' flexGrow='1' sx={{
          height:'100vh-44px',

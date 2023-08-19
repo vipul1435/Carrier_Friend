@@ -57,7 +57,7 @@ const SideEditor = ({clients,copyRoomId}) => {
       <Box sx={{ display: 'flex', flexDirection: 'column', m: '10px', p: '10px' }}>
         <Button variant='contained' sx={{ my: '10px', textTransform: 'capitalize' }}><PersonAddAlt1 sx={{ mr: "5px" }} />Invite</Button>
         <Button variant='contained' onClick={copyRoomId} color="success" sx={{ my: '10px', textTransform: 'capitalize' }}> <ContentCopy sx={{ mr: "5px" }} />Copy room id</Button>
-        <Button variant='contained' onClick={()=>{navigate('/codegroup')}} color='error' sx={{ my: '10px', textTransform: 'capitalize' }}> <ExitToApp sx={{ mr: "5px" }} />Leave Room</Button>
+        <Button variant='contained' onClick={()=>{navigate('/codegroup',{replace:true})}} color='error' sx={{ my: '10px', textTransform: 'capitalize' }}> <ExitToApp sx={{ mr: "5px" }} />Leave Room</Button>
       </Box>
     </Box>
   )

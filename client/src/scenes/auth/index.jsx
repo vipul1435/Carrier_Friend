@@ -26,7 +26,7 @@ const Auth = () => {
           margin:'6px',
         }}
       ></Box>
-      <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' top='30vh' m='10px' position='absolute'>
+      <Box data-aos="fade-up" display='flex' flexDirection='column' justifyContent='center' alignItems='center' top='30vh' m='10px' position='absolute'>
         <Paper display="flex" flexDirection="column" justifyContent="centre" component={Box} padding='10px 20px'>
           <Box display='flex' flexDirection='column' alignItems='center' sx={{
             background: "linear-gradient(195deg, rgb(73, 163, 241), #1a73e8)",
