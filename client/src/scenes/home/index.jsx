@@ -3,6 +3,7 @@ import React from 'react'
 import banner from "assets/bn_1.jpg" 
 import Counting from 'components/home/Counting'
 import Detail from 'components/home/Detail'
+import TypeWriterEffect from 'components/home/TypeWriter'
 const Home = () => {
   const theme  = useTheme();
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       component='img' alt='Banner' loading='lazy' src={banner} sx={{width:'100%',height:'80vh',objectFit:'cover',opacity:'1'}}
       >
       </Box>
+        <TypeWriterEffect></TypeWriterEffect>
       <Paper data-aos="fade-up" sx={{display:"flex",justifyContent:'center',flexDirection:'column',  alignItems:'center',mx:'40px',position:'relative', top:"-60px"}}>
         <Counting/>
         <Detail></Detail>

@@ -1,16 +1,16 @@
 import { WorkOutline, Code, QueryBuilder, VolunteerActivism } from '@mui/icons-material';
-import { Box, Card, useTheme, Typography, Grid } from '@mui/material'
+import { Box, useTheme, Typography, Grid, } from '@mui/material'
 import React from 'react'
-
+import ImageCard from './ImageCard';
 const Detail = () => {
   const theme = useTheme();
+  
   return (
-    <Box  data-aos="fade-up" sx={{ display: "flex", m: '20px', px: '100px', justifyContent: 'center', alignItems: 'center',mt:'20px',[theme.breakpoints.up('md')]:{flexDirection:"row"}, [theme.breakpoints.down('md')]:{flexDirection:"column"}, }}>
-      <Card sx={{ bgcolor: theme.palette.background.main, height: '400px', width: '500px', display: 'flex', flexGrow: 1, m: "20px" }}>
-        ok tata
-      </Card>
-      <Grid container>
+    <Box data-aos="fade-up" sx={{ display: "flex", m: '20px', px: '100px', justifyContent: 'center', alignItems: 'center', mt: '20px', [theme.breakpoints.up('lg')]: { flexDirection: "row" }, [theme.breakpoints.down('lg')]: { flexDirection: "column" }, }}>
 
+      <ImageCard></ImageCard>
+
+      <Grid container>
         <Grid lg={6} sm={12} py='30px' px="50px">
           <WorkOutline sx={{ color: theme.palette.primary.main, fontSize: '35px' }} />
           <Typography sx={{ fontSize: '20px', fontWeight: 'bold', fontFamily: "sans-serif", color: theme.palette.secondary.main, my: '10px' }}>Get Dream Job</Typography>
