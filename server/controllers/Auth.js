@@ -8,9 +8,9 @@ export const signUp = async (req,res) => {
     const user = new User(temp);
     try{
         await user.save();
-        res.status(201).json({sucess:true,token:jwt.sign({id:user._id,Name:user.Name},process.env.SIGN,{expiresIn:"5d"})});
+        res.status(200).json({sucess:true,token:jwt.sign({id:user._id,Name:user.Name},process.env.SIGN,{expiresIn:"5d"})});
     }catch(err){
-        res.status(500).json({sucess:false,error:"Internal Server Error"});
+        res.status(400).json({sucess:false,error:"Internal Server Error"});
     }
 };
 
@@ -24,7 +24,7 @@ export const logIn = async (req,res)=>{
         if(originalPassword === req.body.Password){
             res.status(200).json({sucess:true,token:jwt.sign({id:user._id,Name:user.Name},process.env.SIGN,{expiresIn:"5d"})});
         } else {
-            res.status(401).json({sucess:false,error:"Invalid Email or Password"});
+            res.status(400).json({sucess:false,error:"Invalid Email or Password"});
         }
     }
 }

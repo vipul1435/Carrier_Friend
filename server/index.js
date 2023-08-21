@@ -10,6 +10,7 @@ import AuthRoutes from "./routes/Auth.js";
 import http from "http";
 import ACTIONS from "./Actions.js";
 import { Server } from "socket.io";
+import Contribute from './routes/Contribute.js'
 dotenv.config();
 
 const app = express();
@@ -96,3 +97,4 @@ const http_server = ser.listen(PORT,()=>{
 
 
 app.use('/auth',AuthRoutes);
+app.use('/contribute',Contribute)

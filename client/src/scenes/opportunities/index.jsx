@@ -19,12 +19,12 @@ const Opportunities = () => {
             // justufyContent: 'center',
         }}>
             <Grid container >
-                <Grid lg={3} md={3}>
-                    <Box sx={{ bgcolor: "white", m: '7%', minHeight: '75vh', top: '100px', position: 'sticky', borderRadius: '10px', p: '4%' }}>
+                <Grid item lg={3} md={3}>
+                    <Box sx={{display:'flex', bgcolor: "white", m: '7%', minHeight: '75vh', top: '100px', position: 'sticky', borderRadius: '10px', p: '4%' }}>
                         <FilterVar></FilterVar>
                     </Box>
                 </Grid>
-                <Grid lg={9} md={9} container sx={{mt:'20px' }}>
+                <Grid item lg={9} md={9} container sx={{mt:'20px' }}>
                     {data.map((e,key)=>{
                         return(
                             <JobCard key={key}></JobCard>

@@ -4,7 +4,7 @@ import { Share, WorkOutlineRounded,LocationOn,CalendarMonth,FavoriteBorderOutlin
 const JobCard = () => {
     const data = ["DSA","Node.js", "JavaScript", "React.js","Express","Material UI","Aws"]
     return (
-        <Grid md={6} sx={{ px: '20px', py: '20px' }}>
+        <Grid item md={6} sx={{ px: '20px', py: '10px' }}>
             <Box component={Card} sx={{ minHeight: '200px', width: '100%-20px', bgcolor: 'white', py: '10px', px: '20px',display:'flex',justifyContent:'space-between',flexDirection:'column' }}>
                 <Box>
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -23,7 +23,7 @@ const JobCard = () => {
                 <Box sx={{mt:'10px'}} >
                     <Typography sx={{ fontSize: '15px' }}>Skill Required : 
                     {data.map((e,key)=>{
-                        return <Chip  label={e} size='small' variant='outlined' sx={{m:'5px',color:'grey'}} />
+                        return <Chip key={key} label={e} size='small' variant='outlined' sx={{m:'5px',color:'grey'}} />
                     })}</Typography>
                 </Box>
                 </Box>
@@ -47,7 +47,7 @@ const JobCard = () => {
                     <Box sx={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
                         {/* <Button variant='outlined' size='small'  sx={{mt:'10px'}}>View Details</Button> */}
                         <Typography sx={{ml:'3px',fontSize:'15px',fontWeight:'bold'}}>For more Details</Typography>
-                        <Button variant='contained' size='small' sx={{mt:'10px'}}>Apply Now</Button>
+                        <Button variant='contained' size='small' sx={{mt:"5px",mb:'10px'}}>Apply Now</Button>
                     </Box>
                 </Box>
             </Box>

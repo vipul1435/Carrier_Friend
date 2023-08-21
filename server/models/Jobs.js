@@ -7,6 +7,7 @@ const JobsSchema = new mongoose.Schema({
     },
     Role:{
         type:String,
+        enum:['Full Stack Developer Job','Frontend Developer Job','Backend Developer Job','DevOps Developer Job','Data Scientist Job',"Data Analyst"],
         required:true
     },
     Location:{

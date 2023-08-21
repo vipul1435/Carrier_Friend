@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Aos from "aos";
 import { useEffect } from "react";
 import 'aos/dist/aos.css'
-
+import JobShare from 'scenes/jobShare'
 function App() {
   const dispatch = useDispatch();
   dispatch(setUser({name:"sahil"}))
@@ -49,6 +49,7 @@ function App() {
         <Route path="/aboutus" element={<About/>}/>
         <Route path="/auth" element={<Auth/>}/>
         <Route path='/room/:RoomId' element={<Room/>}/>
+        <Route path='/jobshare' element={<JobShare/>}/>
       </Routes>
     </ThemeProvider>
     </BrowserRouter>
