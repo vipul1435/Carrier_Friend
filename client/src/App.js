@@ -21,9 +21,15 @@ function App() {
   const dispatch = useDispatch();
   dispatch(setUser({name:"sahil"}))
   const val =  useSelector((state) => state.global.user.name);
+  const token = localStorage.getItem('token');
   useEffect(()=>{
     Aos.init();
   },[])
+
+  useEffect(()=>{
+    console.log(token);
+  },[token]);
+
   return (
     <BrowserRouter>
     <ThemeProvider theme={theme}>

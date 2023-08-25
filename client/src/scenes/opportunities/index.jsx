@@ -1,11 +1,30 @@
 import { useTheme } from '@emotion/react'
-import { Box, Card, Grid, Paper } from '@mui/material'
-import React from 'react'
+import { Box, Grid, Paper } from '@mui/material'
+import React, { useEffect, useState } from 'react';
 import FilterVar from 'components/opportunities/FilterVar'
 import JobCard from 'components/opportunities/JobCard'
+import { useGetJobsQuery } from 'store/api';
+import LoadingSkeleton from 'components/opportunities/JobSkeleton'
 const Opportunities = () => {
     const theme = useTheme();
-    const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    const [queryData , setData] = useState({
+        Type: 'none',
+        Worktype: 'none',
+        Grade: 'none',
+    });
+    const temp = [1,2,3,4,5,6];
+    const [query, setquery] = useState("")
+    const {data,isLoading} = useGetJobsQuery(query);
+    useEffect(()=>{
+        let tempQuery = "";
+        Object.keys(queryData).forEach((e)=>{
+            if(queryData[e]!=='none'){
+                tempQuery+=`${e}=${queryData[e]}&`;
+            }
+        });
+        setquery(tempQuery);
+    },[queryData])
+    useEffect(()=>{},[isLoading]);
     return (
         <Paper sx={{
             position: 'relative',
@@ -19,15 +38,19 @@ const Opportunities = () => {
             // justufyContent: 'center',
         }}>
             <Grid container >
-                <Grid item lg={3} md={3}>
-                    <Box sx={{display:'flex', bgcolor: "white", m: '7%', minHeight: '75vh', top: '100px', position: 'sticky', borderRadius: '10px', p: '4%' }}>
-                        <FilterVar></FilterVar>
+                <Grid item lg={3} sm={12}>
+                    <Box sx={{display:'flex', bgcolor: "white",[theme.breakpoints.up("lg")]:{ minHeight: '70vh',m: '7%'}, top: '100px', position: 'sticky', borderRadius: '10px', p: '4%' }}>
+                        <FilterVar queryData={queryData} setData={setData}></FilterVar>
                     </Box>
                 </Grid>
-                <Grid item lg={9} md={9} container sx={{mt:'20px' }}>
-                    {data.map((e,key)=>{
+                <Grid item lg={9} sm={12} container sx={{mt:'20px' }}>
+                    {isLoading ?temp?.map((e,key)=>{
                         return(
-                            <JobCard key={key}></JobCard>
+                            <LoadingSkeleton key={key}></LoadingSkeleton>
+                        )
+                    }) : data?.map((e,key)=>{
+                        return(
+                            <JobCard key={key} data={e}></JobCard>
                         )
                     })}
                 </Grid>

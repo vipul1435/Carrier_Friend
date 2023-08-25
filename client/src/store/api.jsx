@@ -13,7 +13,30 @@ export const api = createApi({
             }),
             rovidesTags:["shareJob"]
         }),
+        userLogin: builder.mutation({
+            query: (data) => ({
+                url: 'auth/login',
+                method: 'POST',
+                body:data,
+            }),
+            rovidesTags:["userLogin"]
+        }),
+        userSignup:builder.mutation({
+            query: (data) => ({
+                url:'auth/signup',
+                method:'POST',
+                body:data
+            }),
+            providesTags:['userSignup']
+        }),
+        getJobs:builder.query({
+            query:(query)=>({
+                url:`/contribute?${query}`,
+                method:"GET"
+            }),
+            providesTags:['getJobs']
+        })
     }),
 });
 
-export const {useShareJobMutation} = api;
+export const {useShareJobMutation,useUserLoginMutation,useUserSignupMutation,useGetJobsQuery} = api;

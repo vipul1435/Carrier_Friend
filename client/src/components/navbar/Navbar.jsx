@@ -35,10 +35,12 @@ const Navbar = () => {
         </Typography>
         <Tabs textColor='primary' value={value} onChange={(e,value)=>{
            setvalue(value)}} indicatorColor='primary'>
-          <Tab label='Home' sx={{fontWeight:"bold",color:'black' , textTransform:'capitalize'}} to="/" component={Link} />
-          <Tab label='Opportunities' sx={{fontWeight:"bold",color:'black' , textTransform:'capitalize'}} to="/opportunities" component={Link}/>
-          <Tab label='Code Group'  sx={{fontWeight:"bold",color:'black' , textTransform:'capitalize'}} to="/codegroup" component={Link}/>
-          <Tab label='About US'  sx={{fontWeight:"bold",color:'black' , textTransform:'capitalize'}} to="/aboutus" component={Link}/>
+          <Tab  label='Home' sx={{fontWeight:"bold",color:'black' , textTransform:'capitalize'}} to="/" component={Link} />
+          <Tab  label='Opportunities' sx={{fontWeight:"bold",color:'black' , textTransform:'capitalize'}} to="/opportunities" component={Link}/>
+          <Tab  label='Code Group'  sx={{fontWeight:"bold",color:'black' , textTransform:'capitalize'}} to="/codegroup" component={Link}/>
+          <Tab 
+          
+          label='About US'  sx={{fontWeight:"bold",color:'black' , textTransform:'capitalize'}} to="/aboutus" component={Link}/>
         </Tabs>
         <Button variant='outlined' color='primary' sx={{fontWeight:"bold",ml:"auto", textTransform:'capitalize'}} onClick={()=>{Navigate('/auth')}} >Login/Signup</Button>
       </Toolbar>

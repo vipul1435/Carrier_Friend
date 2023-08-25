@@ -30,6 +30,11 @@ const ContributesSchema = new mongoose.Schema({
     },
     LastDate: {
         type: Date,
+        default: () => {
+            const currentDate = new Date();
+            currentDate.setDate(currentDate.getDate() + 20);
+            return currentDate;
+          },
     },
     Link: {
         type: String,
@@ -41,8 +46,13 @@ const ContributesSchema = new mongoose.Schema({
     },
     Description: {
         type: String,
-    }
-});
+    },
+    status: {
+        type: String,
+        enum: ['verified', 'pending', 'rejected'],
+        default: 'pending'
+    },
+},{timestamps:true});
 
 const Contributes = mongoose.model('Contributes', ContributesSchema);
 export default Contributes;

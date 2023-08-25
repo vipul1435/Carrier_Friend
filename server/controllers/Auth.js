@@ -8,23 +8,27 @@ export const signUp = async (req,res) => {
     const user = new User(temp);
     try{
         await user.save();
-        res.status(200).json({sucess:true,token:jwt.sign({id:user._id,Name:user.Name},process.env.SIGN,{expiresIn:"5d"})});
+        res.status(200).json(jwt.sign({id:user._id,Name:user.Email},process.env.SIGN,{expiresIn:"5d"}));
     }catch(err){
-        res.status(400).json({sucess:false,error:"Internal Server Error"});
+        res.status(400).json("Internal Server Error");
     }
 };
 
 export const logIn = async (req,res)=>{
     let user = await User.findOne({Email:req.body.Email});
     if(!user){
-        res.status(401).json({sucess:false,error:"Invalid Email or Password"});
+        res.status(401).json("Invalid Email or Password");
     } else {
         let bytes = CryptoJS.AES.decrypt(user.Password, process.env.SECRET_KEY);
         let originalPassword = bytes.toString(CryptoJS.enc.Utf8);
         if(originalPassword === req.body.Password){
-            res.status(200).json({sucess:true,token:jwt.sign({id:user._id,Name:user.Name},process.env.SIGN,{expiresIn:"5d"})});
+            res.status(200).json(jwt.sign({id:user._id,Name:user.Email},process.env.SIGN,{expiresIn:"5d"}));
         } else {
-            res.status(400).json({sucess:false,error:"Invalid Email or Password"});
+            res.status(400).json("Invalid Email or Password");
         }
     }
+}
+
+export const verifyUser = async (req,res)=>{
+    
 }

@@ -1,25 +1,51 @@
-import { Box, Paper, Typography, Divider, FormControl, TextField, Grid, Button, Select, MenuItem } from '@mui/material'
+import { Box, Paper, Typography, Divider, FormControl, TextField, Grid,CircularProgress ,Button, Select, MenuItem, } from '@mui/material'
 import React, { useState } from 'react';
 import { useTheme } from '@mui/material';
 import { VolunteerActivism } from '@mui/icons-material';
 import { InitialData } from 'Actions/ShareJobAction'
-import { useShareJobMutation } from 'store/api';
+import { useShareJobMutation } from 'store/api'
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 const JobShare = () => {
+    const naviagte = useNavigate();
     const theme = useTheme();
+    const [isClicked, setisClicked] = useState(false)
     const [data, setdata] = useState(InitialData);
     const [shareJob] = useShareJobMutation();
-
+    const [skill, setskill] = useState([]);
+    const [grade, setgrade] = useState([]);
     const handleChange = (e) => {
-        setdata({ ...data, [e.target.name]: e.target.value});
+        setdata({ ...data, [e.target.name]: e.target.value });
     }
     const hanleChangeArray = (e) => {
-        setdata({ ...data, [e.target.name]: e.target.value.split(',') });
+        if (e.target.name === 'Skill') {
+            setskill(e.target.value);
+            let arr = e.target.value.split(',');
+            setdata({ ...data, [e.target.name]: arr.map(item=>item.trim()).filter(item=>item!=="")});
+        } else if (e.target.name === 'Grade') {
+            setgrade(e.target.value);
+            let arr = e.target.value.split(',');
+            setdata({ ...data, [e.target.name]: arr.map(item=>item.trim()).filter(item=>item!=="")});
+        } else {
+            setdata({ ...data, [e.target.name]: e.target.value.split(',') });
+        }
     }
-    const handleSubmit = (e) => {
+    const handleSubmit =async (e) => {
+
         e.preventDefault();
-        console.log(data);
-       const val = shareJob(data);
-       console.log(val);
+        setisClicked(true);
+        await shareJob(data).then((res)=>{
+            if(res?.data){
+                console.log(res.data)
+                toast.success("Job Shared Successfully");
+                naviagte('/opportunities',{replace:true});
+            } else {
+                toast.error("Job Already Exist or Internal Server Error");
+            }
+        }).catch(()=>{
+            toast.error("Internal Server Error");
+        });
+        setisClicked(false);
     }
     return (
         <Box sx={{ bgcolor: theme.palette.background.main, width: '100%', pt: '3%' }}>
@@ -164,7 +190,7 @@ const JobShare = () => {
                                 variant="outlined"
                                 name="Skill"
                                 onChange={hanleChangeArray}
-                                value={data.Skill}
+                                value={skill}
                                 multiline
                                 rows={1}
                             />
@@ -178,7 +204,7 @@ const JobShare = () => {
                                 variant="outlined"
                                 name="Grade"
                                 onChange={hanleChangeArray}
-                                value={data.Grade}
+                                value={grade}
                                 multiline
                                 rows={1}
                             />
@@ -200,13 +226,15 @@ const JobShare = () => {
                         </Grid>
                         <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'row', alignItems: 'center', mb: '20px', mt: '10px' }}>
                             <Button type="submit" variant="contained" color="primary" sx={{ textTransform: 'capitalize', px: '40px' }} onClick={handleSubmit}>
-                                Share Job
+                               {isClicked ? <CircularProgress size='25px' color="secondary" />:"Share Job"}
                             </Button>
                         </Grid>
 
                     </Grid>
                 </FormControl>
-            </Paper>
+
+          
+                </Paper>
         </Box>
     )
 }

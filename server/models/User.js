@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
     Phone:{
         type:String,
         default:""
+    },
+    Contributions:{
+        type:Number,
+        default:0
     }
 },{timestamps:true});
 

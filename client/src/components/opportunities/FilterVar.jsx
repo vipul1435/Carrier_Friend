@@ -1,19 +1,17 @@
-import { Box, Typography, FormControl, InputLabel, Select, MenuItem, Divider, Button } from '@mui/material';
-import React from 'react';
+import { Box, Typography, FormControl, Select, MenuItem, Divider, Button } from '@mui/material';
 import { Tune, LocationOn, WorkOutline, Grade, VolunteerActivism } from '@mui/icons-material';
 import { useTheme } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-const FilterVar = () => {
-    const navigate= useNavigate();
+const FilterVar = ({queryData,setData,}) => {
+    const navigate = useNavigate();
     const theme = useTheme();
-    const [age, setAge] = React.useState('');
-
     const handleChange = (event) => {
-        setAge(event.target.value);
+        setData({...queryData, [event.target.name]: event.target.value});
     };
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-            <Box>
+        <Box sx={{ display: 'flex', [theme.breakpoints.down("lg")]:{flexDirection:'row'}, [theme.breakpoints.up("lg")]:{flexDirection:'column'},[theme.breakpoints.down("sm")]:{flexDirection:'column'}, justifyContent: 'space-between' }}>
+            <Box sx={{[theme.breakpoints.down("lg")]:{display: 'flex',flexDirection:'row',justifyContent: 'space-between' }
+        }}>
                 <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap' }}>
                     <Tune sx={{ color: theme.palette.primary.main }}></Tune>
                     <Typography sx={{
@@ -38,26 +36,25 @@ const FilterVar = () => {
                         }}>
                             Find by Job Type:
                         </Typography></Box>
-                    <div>
-                        <FormControl sx={{ mx: "0px", width: '80%', minWidth: 80 }} size='small'>
-                            <InputLabel id="demo-simple-select-autowidth-label">Age</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-autowidth-label"
-                                id="demo-simple-select-autowidth"
-                                value={age}
+                    <Box>
+                        <FormControl fullWidth>
+                            <Select size='small'
+                                name="Type"
+                                variant="outlined"
+
                                 onChange={handleChange}
-                                autoWidth
-                                label="Age"
-                            >
-                                <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                <MenuItem value={10}>Twenty</MenuItem>
-                                <MenuItem value={21}>Twenty one</MenuItem>
-                                <MenuItem value={22}>Twenty one and a half</MenuItem>
+                                value={queryData.Type}
+                                required
+                            >   
+                                <MenuItem value="none">none</MenuItem>
+                                <MenuItem value="Full+Time">Full Time</MenuItem>
+                                <MenuItem value="Part+Time">Part Time</MenuItem>
+                                <MenuItem value="Internship">Internship</MenuItem>
+                                <MenuItem value="Freelance">Freelance</MenuItem>
+                                <MenuItem value="Contract">Contract</MenuItem>
                             </Select>
                         </FormControl>
-                    </div>
+                    </Box>
                 </Box>
                 <Box sx={{ my: '25px' }}>
                     <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -71,26 +68,23 @@ const FilterVar = () => {
                         }}>
                             Find by Job Location:
                         </Typography></Box>
-                    <div>
-                        <FormControl sx={{ mx: "0px", width: '80%', minWidth: 80 }} size='small'>
-                            <InputLabel id="demo-simple-select-autowidth-label">Age</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-autowidth-label"
-                                id="demo-simple-select-autowidth"
-                                value={age}
+                    <Box>
+                        <FormControl fullWidth>
+                            <Select size='small'
+                                name="Worktype"
+                                variant="outlined"
+
                                 onChange={handleChange}
-                                autoWidth
-                                label="Age"
+                                value={queryData.Worktype}
+                                required
                             >
-                                <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                <MenuItem value={10}>Twenty</MenuItem>
-                                <MenuItem value={21}>Twenty one</MenuItem>
-                                <MenuItem value={22}>Twenty one and a half</MenuItem>
+                                <MenuItem value="none">none</MenuItem>
+                                <MenuItem value="Remote">Remote</MenuItem>
+                                <MenuItem value="Onsite">Onsite</MenuItem>
+                                <MenuItem value="Hybrid">Hybrid</MenuItem>
                             </Select>
                         </FormControl>
-                    </div>
+                    </Box>
                 </Box>
                 <Box sx={{ my: '25px' }}>
                     <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -104,31 +98,36 @@ const FilterVar = () => {
                         }}>
                             Find by your Grade:
                         </Typography></Box>
-                    <div>
-                        <FormControl sx={{ mx: "0px", width: '80%', minWidth: 80 }} size='small'>
-                            <InputLabel id="demo-simple-select-autowidth-label">Age</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-autowidth-label"
-                                id="demo-simple-select-autowidth"
-                                value={age}
+                    <Box>
+                        <FormControl fullWidth>
+                            <Select size='small'
+                                name="Grade"
+                                variant="outlined"
+
                                 onChange={handleChange}
-                                autoWidth
-                                label="Age"
-                            >
-                                <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                <MenuItem value={10}>Twenty</MenuItem>
-                                <MenuItem value={21}>Twenty one</MenuItem>
-                                <MenuItem value={22}>Twenty one and a half</MenuItem>
+                                value={queryData.Grade}
+                                required
+                            >   
+                                <MenuItem value="none">none</MenuItem>
+                                <MenuItem value="2020">2020</MenuItem>
+                                <MenuItem value="2021">2021</MenuItem>
+                                <MenuItem value="2022">2022</MenuItem>
+                                <MenuItem value="2023">2023</MenuItem>
+                                <MenuItem value="2024">2024</MenuItem>
+                                <MenuItem value="2025">2025</MenuItem>
+                                <MenuItem value="2026">2026</MenuItem>
+                                <MenuItem value="2027">2027</MenuItem>
+                                <MenuItem value="2028">2028</MenuItem>
+                                <MenuItem value="2029">2029</MenuItem>
+                                <MenuItem value="2030">2030</MenuItem>
                             </Select>
                         </FormControl>
-                    </div>
+                    </Box>
                 </Box>
             </Box>
             <Box mb='4%'>
                 <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
-                    <VolunteerActivism sx={{ color: theme.palette.secondary.main }}></VolunteerActivism>
+                    <VolunteerActivism sx={{ color: "red", }}></VolunteerActivism>
                     <Typography sx={{
                         mx: '5px',
                         fontWeight: '500',
@@ -140,7 +139,7 @@ const FilterVar = () => {
                     </Typography></Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Button variant='contained' size='small' sx={{ textTransform: 'capitalize' }}
-                    onClick={()=>{navigate('/jobshare')}}
+                        onClick={() => { navigate('/jobshare', { replace: true }) }}
                     >Share a Job</Button></Box>
             </Box>
         </Box>
