@@ -9,27 +9,30 @@ import Code from "scenes/code";
 import Auth from "scenes/auth";
 import Room from "scenes/room";
 import NavControl from "components/navbar/NavControl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { setUser } from "store";
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Aos from "aos";
 import { useEffect } from "react";
 import 'aos/dist/aos.css'
-import JobShare from 'scenes/jobShare'
+import JobShare from 'scenes/jobShare';
+import { useVerifyUserQuery } from "store/api";
+import Admin from "scenes/admin";
+import Rejected from "scenes/admin/dashboard/rejected";
+import Verified from "scenes/admin/dashboard/verified";
+import Pending from "scenes/admin/dashboard/pending";
+import Statics from "scenes/admin/dashboard/statics";
+
 function App() {
   const dispatch = useDispatch();
-  dispatch(setUser({name:"sahil"}))
-  const val =  useSelector((state) => state.global.user.name);
-  const token = localStorage.getItem('token');
+  const {data,isLoading} = useVerifyUserQuery();
+  if(data && !isLoading){
+    dispatch(setUser(data));
+  }
   useEffect(()=>{
     Aos.init();
   },[])
-
-  useEffect(()=>{
-    console.log(token);
-  },[token]);
-
   return (
     <BrowserRouter>
     <ThemeProvider theme={theme}>
@@ -56,6 +59,12 @@ function App() {
         <Route path="/auth" element={<Auth/>}/>
         <Route path='/room/:RoomId' element={<Room/>}/>
         <Route path='/jobshare' element={<JobShare/>}/>
+        <Route path='/admin' element={<Admin/>}>
+          <Route path="verified" element={<Verified/>}/>
+          <Route path="pending" element={<Pending/>}/>
+          <Route path="rejected" element={<Rejected/>}/>
+          <Route path="statics" element={<Statics/>}/>
+        </Route>
       </Routes>
     </ThemeProvider>
     </BrowserRouter>

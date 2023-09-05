@@ -10,6 +10,7 @@ export const api = createApi({
                 url: '/contribute',
                 method: 'POST',
                 body:data,
+                credentials:'include'
             }),
             rovidesTags:["shareJob"]
         }),
@@ -18,6 +19,7 @@ export const api = createApi({
                 url: 'auth/login',
                 method: 'POST',
                 body:data,
+                credentials:'include'
             }),
             rovidesTags:["userLogin"]
         }),
@@ -25,18 +27,36 @@ export const api = createApi({
             query: (data) => ({
                 url:'auth/signup',
                 method:'POST',
-                body:data
+                body:data,
+                credentials:'include'
             }),
             providesTags:['userSignup']
         }),
         getJobs:builder.query({
             query:(query)=>({
                 url:`/contribute?${query}`,
-                method:"GET"
+                method:"GET",
+                credentials:'include'
             }),
             providesTags:['getJobs']
-        })
+        }),
+        verifyUser:builder.query({
+            query:()=>({
+                url:'/auth/verify',
+                method:'GET',
+                credentials:'include'
+            }),
+            providesTags:['verifyUser']
+        }),
+        updateJob:builder.mutation({
+            query:(data)=>({
+                url:`/contribute/${data.id}?${data.query}`,
+                method:'PUT',
+                credentials:'include'
+            }),
+            providesTags:['updateJob']
+        }),
     }),
 });
 
-export const {useShareJobMutation,useUserLoginMutation,useUserSignupMutation,useGetJobsQuery} = api;
+export const {useShareJobMutation,useUserLoginMutation,useUserSignupMutation,useGetJobsQuery,useVerifyUserQuery,useUpdateJobMutation} = api;

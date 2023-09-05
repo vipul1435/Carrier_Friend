@@ -25,6 +25,11 @@ const userSchema = new mongoose.Schema({
     Contributions:{
         type:Number,
         default:0
+    },
+    Role:{
+        type:String,
+        enum:["admin","user"],
+        default:"user"
     }
 },{timestamps:true});
 

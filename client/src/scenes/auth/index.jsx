@@ -1,11 +1,14 @@
 import { useTheme } from '@emotion/react'
 import { Box, Typography, Paper, TextField, Button, CircularProgress } from '@mui/material'
 import bg from 'assets/bg_4.png'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { setUser } from "store";
 import { toast } from 'react-toastify'
-import { useUserLoginMutation, useUserSignupMutation } from 'store/api'
+import { useUserLoginMutation, useUserSignupMutation} from 'store/api'
 const Auth = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLogin, setisLogin] = useState(true)
   const [authStarted, setauthStarted] = useState(false)
@@ -16,13 +19,12 @@ const Auth = () => {
   const onchange = (e) => {
     setcredential({ ...credential, [e.target.name]: e.target.value })
   }
-
   const Authenticate = async () => {
     setauthStarted(true);
     if (isLogin) {
      await userLogin(credential).then((res) => {
         if(res?.data){
-          localStorage.setItem("token",res.data);
+          dispatch(setUser(res.data));
           toast.success("Logged in Successfully")
           navigate(-1);
         } else {
@@ -34,7 +36,7 @@ const Auth = () => {
     } else {
      await userSignup(credential).then((res) => {
         if (res?.data) {
-          localStorage.setItem("token",res.data);
+          dispatch(setUser(res.data));
           toast.success("Sign Up Successfully");
           navigate(-1);
         } else {
@@ -46,7 +48,6 @@ const Auth = () => {
     }
     setauthStarted(false);
   }
-
 
   return (
     <Box display='flex' flexDirection='column' alignItems='center' sx={{

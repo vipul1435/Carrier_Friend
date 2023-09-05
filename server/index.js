@@ -11,6 +11,7 @@ import http from "http";
 import ACTIONS from "./Actions.js";
 import { Server } from "socket.io";
 import Contribute from './routes/Contribute.js'
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 const app = express();
@@ -19,13 +20,18 @@ const io =new Server(ser)
 
 
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+
+app.use('*',cors({
+    origin:true,
+    credentials:true
+}))
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({policy:'cross-origin'}));
 app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 5500;
 

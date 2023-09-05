@@ -24,7 +24,6 @@ const Opportunities = () => {
         });
         setquery(tempQuery);
     },[queryData])
-    useEffect(()=>{},[isLoading]);
     return (
         <Paper sx={{
             position: 'relative',
@@ -44,7 +43,7 @@ const Opportunities = () => {
                     </Box>
                 </Grid>
                 <Grid item lg={9} sm={12} container sx={{mt:'20px' }}>
-                    {isLoading ?temp?.map((e,key)=>{
+                    {isLoading ? temp?.map((e,key)=>{
                         return(
                             <LoadingSkeleton key={key}></LoadingSkeleton>
                         )
