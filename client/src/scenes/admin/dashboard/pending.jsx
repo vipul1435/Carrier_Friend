@@ -5,7 +5,7 @@ import TableSkeleton from 'components/admin/TableSkeleton';
 import { useUpdateJobMutation } from 'store/api';
 const Pending = () => {
   const [updateJob]=useUpdateJobMutation();
-  const [query,setQuery] = React.useState("");
+  const [query,setQuery] = React.useState("status=pending");
   const {data,isLoading} = useGetJobsQuery(query);
   return (
     <div>

@@ -15,7 +15,7 @@ export const getContribute = async (req,res) => {
     try{
         const query = req.query;
         if(!query?.status){
-            query.status='rejected'
+            query.status='verified'
         }
         const contribute = await Contributes.find(query).sort({createdAt:-1});
         res.status(200).json(contribute);
