@@ -61,7 +61,7 @@ const Code = () => {
             mb='5px'
           ></Box>
           <Divider orientation="vertical" flexItem color='white' />
-          <Typography sx={{ color: 'white', fontSize: '30px', fontWeight: 'bold', fontFamily: 'roboto', ml: "5px" }}>
+          <Typography component={'span'} sx={{ color: 'white', fontSize: '30px', fontWeight: 'bold', fontFamily: 'roboto', ml: "5px" }}>
             Code Group
           </Typography>
         </Box>
@@ -106,7 +106,7 @@ const Code = () => {
           onKeyUp={(e)=>{if(e.code === 'Enter'){handelClick()}}}
         />
         <Button variant='contained' sx={{ textTransform: 'capitalize', bgcolor: "#4aed88" }} onClick={handelClick} >Join Room</Button>
-        <Typography sx={{
+        <Typography component={'span'} sx={{
           color: 'white',
         }}>
           If you don't have a room id,<Button onClick={creteNewRoom} sx={{

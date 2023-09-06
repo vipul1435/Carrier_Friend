@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import RowData from './RowData';
+import { useSelector } from 'react-redux';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.secondary.main,
@@ -18,7 +19,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
 }));
 
-export default function TableData({ data,updateJob }) {   
+export default function TableData({ data,updateJob}) {
+    const clickedData = useSelector((state) => state.global.clickedData);   
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -39,7 +41,7 @@ export default function TableData({ data,updateJob }) {
                 </TableHead>
                 <TableBody>
                     {data.map((item) => (
-                        <RowData item={item} key={item._id} updateJob={updateJob}/>
+                        <RowData item={item} key={item._id} updateJob={updateJob} clickedData={clickedData}/>
                     ))}
                 </TableBody>
             </Table>

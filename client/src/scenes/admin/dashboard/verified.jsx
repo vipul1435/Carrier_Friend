@@ -1,7 +1,7 @@
 import React from 'react'
-import TableData from 'components/admin/TableData'
+import TableData from 'components/admin/TableData/TableData'
 import { useGetJobsQuery } from 'store/api';
-import TableSkeleton from 'components/admin/TableSkeleton';
+import TableSkeleton from 'components/admin/TableData/TableSkeleton';
 import { useUpdateJobMutation } from 'store/api';
 const Verified = () => {
   const [updateJob]=useUpdateJobMutation();

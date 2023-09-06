@@ -16,15 +16,15 @@ const JobCard = ({ data }) => {
                                 <WorkOutlineRounded />
                             </Box>
                             <Box>
-                                <Typography sx={{ fontSize: '18px', fontWeight: 'bold' }}>{data?.Role}</Typography>
-                                <Typography sx={{ fontSize: '15px', color: 'grey' }}>{data?.Company} | {data?.Type}</Typography>
+                                <Typography component={'span'} sx={{ fontSize: '18px', fontWeight: 'bold' }}>{data?.Role}</Typography>
+                                <Typography component={'span'} sx={{ fontSize: '15px', color: 'grey' }}>{data?.Company} | {data?.Type}</Typography>
                             </Box>
                         </Box>
                         <Share sx={{ color: 'green' }}></Share>
                     </Box>
                     <Divider sx={{ my: '5px' }}></Divider>
                     <Box sx={{ mt: '10px' }} >
-                        <Typography sx={{ fontSize: '15px' }}>Skill Required :
+                        <Typography component={'span'} sx={{ fontSize: '15px' }}>Skill Required :
                             {data?.Skill?.map((e, key) => {
                                 return <Chip key={key} label={e} size='small' variant='outlined' sx={{ m: '5px', color: 'grey',textTransform:'capitalize' }} />
                             })}</Typography>
@@ -34,22 +34,22 @@ const JobCard = ({ data }) => {
                     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                             <LocationOn />
-                            <Typography sx={{ ml: '3px', fontSize: '15px', fontWeight: 'bold' }}>Location</Typography>
+                            <Typography component={'span'} sx={{ ml: '3px', fontSize: '15px', fontWeight: 'bold' }}>Location</Typography>
                         </Box>
-                        <Typography sx={{ fontSize: '15px', color: 'grey', textAlign: 'right' }}>{data?.Worktype}</Typography>
+                        <Typography component={'span'} sx={{ fontSize: '15px', color: 'grey', textAlign: 'right' }}>{data?.Worktype}</Typography>
                     </Box>
                     <Divider orientation="vertical" flexItem variant='middle' />
                     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                             <CalendarMonth />
-                            <Typography sx={{ ml: '3px', fontSize: '15px', fontWeight: 'bold' }}>Last Date</Typography>
+                            <Typography component={'span'} sx={{ ml: '3px', fontSize: '15px', fontWeight: 'bold' }}>Last Date</Typography>
                         </Box>
-                        <Typography sx={{ fontSize: '15px', color: 'grey', textAlign: 'right' }}>{formattedDate}</Typography>
+                        <Typography component={'span'} sx={{ fontSize: '15px', color: 'grey', textAlign: 'right' }}>{formattedDate}</Typography>
                     </Box>
                     <Divider orientation="vertical" flexItem variant='middle' />
                     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                         {/* <Button variant='outlined' size='small'  sx={{mt:'10px'}}>View Details</Button> */}
-                        <Typography sx={{ ml: '3px', fontSize: '15px', fontWeight: 'bold' }}>For more Details</Typography>
+                        <Typography component={'span'} sx={{ ml: '3px', fontSize: '15px', fontWeight: 'bold' }}>For more Details</Typography>
                         <Button variant='contained' size='small' sx={{ mt: "5px", mb: '10px' }}>Apply Now</Button>
                     </Box>
                 </Box>

@@ -40,7 +40,7 @@ const SideEditor = ({clients,copyRoomId}) => {
             mb='5px'
           ></Box>
           <Divider orientation="vertical" flexItem color='white' />
-          <Typography sx={{ color: 'white', fontSize: '25px', fontWeight: 'bold', fontFamily: 'roboto', ml: "5px" }}>
+          <Typography component={'span'} sx={{ color: 'white', fontSize: '25px', fontWeight: 'bold', fontFamily: 'roboto', ml: "5px" }}>
             Code Group
           </Typography>
         </Box>
@@ -49,7 +49,7 @@ const SideEditor = ({clients,copyRoomId}) => {
           {clients.map((client , key)=>{
             return <Box key={key} component={Card} display='flex' flexDirection='column' justifyContent='center' alignItems='center' sx={{bgcolor:'#282a36',p:'10px',m:'10px',height:'75px'}}>
             <Avatar {...stringAvatar('Lappu Sappu')} />
-            <Typography color='white'>{client.userName}</Typography>
+            <Typography component={'span'} color='white'>{client.userName}</Typography>
             </Box>
           })} 
         </Box>

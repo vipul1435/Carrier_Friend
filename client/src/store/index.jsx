@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     user:null,
+    clickedData:null,
 };
 
 export const globalSlice =  createSlice({
@@ -10,9 +11,12 @@ export const globalSlice =  createSlice({
     reducers:{
         setUser:(state,action)=>{
             state.user = action.payload;
-        }
+        },
+        setClick:(state,action)=>{
+            state.clickedData = action.payload;
+        },
     }
 });
 
-export const {setUser} =  globalSlice.actions;
+export const {setUser,setClick} =  globalSlice.actions;
 export default globalSlice.reducer;

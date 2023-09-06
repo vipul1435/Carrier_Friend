@@ -84,7 +84,7 @@ export default function Admin() {
         <Box sx={{ display: 'flex' }}>
             <Drawer variant="permanent" open={open} PaperProps={{sx:{ bgcolor:theme.palette.background.main}}} >
                 <DrawerHeader >
-                    {open && <Typography sx={{ mx: "auto", fontSize: '20px', fontWeight: 'bold' }}>DashBoard</Typography>}
+                    {open && <Typography component={'span'} sx={{ mx: "auto", fontSize: '20px', fontWeight: 'bold' }}>DashBoard</Typography>}
                     <IconButton onClick={handleDrawer}>
                         {open ? <MenuOpen sx={{ color: theme.palette.primary.main }} /> : <Menu sx={{ color: theme.palette.primary.main }} />}
                     </IconButton>

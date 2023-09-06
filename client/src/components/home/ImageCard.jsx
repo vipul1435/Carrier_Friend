@@ -35,7 +35,7 @@ const ImageCard = () => {
                 
             }}
         >
-           <Typography sx={{
+           <Typography component={'span'} sx={{
             fontSize:'25px',
             color:'white',
             fontWeight:'bold',

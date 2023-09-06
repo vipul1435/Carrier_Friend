@@ -52,7 +52,7 @@ export const logIn = async (req, res) => {
     }
 }
 
-export const verifyUser = async (req, res) => {
+export const verifyUser = async (req,res) => {
     try {
         const token = req?.cookies?.token;
         if (!token) {
@@ -61,7 +61,7 @@ export const verifyUser = async (req, res) => {
             const verified = jwt.verify(token, process.env.SIGN);
             const user = await User.findById(verified.id);
             if (!user) {
-                res.status(401).json("Unauthorized");
+                res.status(400).json("Unauthorized");
             }
             const newuser = {};
             newuser.Email = user.Email;

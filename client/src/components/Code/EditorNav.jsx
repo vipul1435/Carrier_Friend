@@ -5,7 +5,7 @@ const EditorNav = () => {
     return (
         <Box sx={{ bgcolor:"#1c1e29", display: 'flex', flexGrow: '1'  }}>
             <Box sx={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',mx:'15px'}}>
-                <Typography sx={{color:'white' ,fontFamily:'sans-serif',fontSize:'17px',fontWeight:'500'}}>Select Language :</Typography>
+                <Typography component={'span'} sx={{color:'white' ,fontFamily:'sans-serif',fontSize:'17px',fontWeight:'500'}}>Select Language :</Typography>
                 <Box sx={{ minWidth: 120 }}>
                     <FormControl fullWidth >
                         <NativeSelect sx={{color:'white',mx:'5px'}}
@@ -23,7 +23,7 @@ const EditorNav = () => {
                 </Box>
             </Box>
             <Box sx={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',mx:'15px'}}>
-                <Typography sx={{color:'white' ,fontFamily:'sans-serif',fontSize:'17px',fontWeight:'500'}}>Select Theme :</Typography>
+                <Typography component={'span'} sx={{color:'white' ,fontFamily:'sans-serif',fontSize:'17px',fontWeight:'500'}}>Select Theme :</Typography>
                 <Box sx={{ minWidth: 120 }}>
                     <FormControl fullWidth>
                         <NativeSelect sx={{color:'white',mx:'5px'}}

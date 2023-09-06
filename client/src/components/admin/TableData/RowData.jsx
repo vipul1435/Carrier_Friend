@@ -5,6 +5,8 @@ import TableRow from '@mui/material/TableRow';
 import { Box, Button, CircularProgress } from "@mui/material"
 import { useTheme } from '@mui/material/styles';
 import { Verified, Pending, GppBad } from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux';
+import { setClick } from 'store';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.secondary.main,
@@ -34,10 +36,11 @@ const dateConveter = (date) => {
 }
 
 
-const RowData = ({ item, updateJob }) => {
+const RowData = ({ item, updateJob, clickedData }) => {
+    const dispatch = useDispatch();
     const theme = useTheme();
     const [isClicked, setIsClicked] = React.useState(false);
-    const handleClick =async (id, status) => {
+    const handleClick = async (id, status) => {
         setIsClicked(true);
         const data = {
             id: id,
@@ -45,7 +48,8 @@ const RowData = ({ item, updateJob }) => {
         }
         await updateJob(data).then((res) => {
             setIsClicked(false);
-        }).catch((err) => { 
+            dispatch(setClick({ ...clickedData, [id]: status }));
+        }).catch((err) => {
             setIsClicked(false);
         });
     }
@@ -75,9 +79,9 @@ const RowData = ({ item, updateJob }) => {
             </StyledTableCell>
 
             <StyledTableCell align="right">
-                
-                {(item.status === "pending" || item.status === "rejected") && <Button size='small' variant='outlined' color='success' onClick={() => handleClick(item._id, "verified")} sx={{ textTransform: 'capitalize', mr: '3px' }}>{isClicked?<CircularProgress size={23} color='success'/>:"Verify"}</Button>}
-                {(item.status === "pending" || item.status === "verified") && <Button size='small' variant='outlined' color='error' onClick={() => handleClick(item._id, "rejected")} sx={{ textTransform: 'capitalize', ml: '3px' }} >{isClicked?<CircularProgress size={23} color='error'/>:"Reject"}</Button>}
+                {(clickedData && clickedData[item._id] !== undefined) ? <Button disabled size='small' variant='contained' color='success' sx={{ textTransform: 'capitalize', mr: '3px' }}>{clickedData[item._id]}</Button> : <>
+                    {(item.status === "pending" || item.status === "rejected") && <Button size='small' variant='outlined' color='success' onClick={() => handleClick(item._id, "verified")} sx={{ textTransform: 'capitalize', mr: '3px' }}>{isClicked ? <CircularProgress size={23} color='success' /> : "Verify"}</Button>}
+                    {(item.status === "pending" || item.status === "verified") && <Button size='small' variant='outlined' color='error' onClick={() => handleClick(item._id, "rejected")} sx={{ textTransform: 'capitalize', ml: '3px' }} >{isClicked ? <CircularProgress size={23} color='error' /> : "Reject"}</Button>}</>}
             </StyledTableCell>
         </StyledTableRow>
     )

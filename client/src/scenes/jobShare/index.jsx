@@ -52,7 +52,7 @@ const JobShare = () => {
             <Paper sx={{ width: '70vw', mx: 'auto', p: "20px" }}>
                 <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
                     <VolunteerActivism sx={{ color: theme.palette.primary.main }}></VolunteerActivism>
-                    <Typography sx={{
+                    <Typography component={'span'} sx={{
                         mx: '5px',
                         fontWeight: 'bold',
                         fontSize: '1.2rem',
@@ -67,7 +67,7 @@ const JobShare = () => {
                 <FormControl sx={{ width: '100%' }}>
                     <Grid container sx={{ mt: '20px' }}>
                         <Grid item lg={6} sx={{ p: '20px' }}>
-                            <Typography sx={{ fontSize: '14px', mb: '5px' }}>Company Name <span style={{ color: 'red', fontSize: '20px' }}>*</span></Typography>
+                            <Typography component={'span'} sx={{ fontSize: '14px', mb: '5px' }}>Company Name <span style={{ color: 'red', fontSize: '20px' }}>*</span></Typography>
                             <TextField
                                 fullWidth
                                 placeholder='Enter Company Name'
@@ -81,7 +81,7 @@ const JobShare = () => {
                             />
                         </Grid>
                         <Grid item lg={6} sx={{ p: '20px' }}>
-                            <Typography sx={{ fontSize: '14px', mb: '5px' }}>Office Location<span style={{ color: 'red', fontSize: '20px' }}></span></Typography>
+                            <Typography component={'span'} sx={{ fontSize: '14px', mb: '5px' }}>Office Location<span style={{ color: 'red', fontSize: '20px' }}></span></Typography>
                             <TextField
                                 fullWidth
                                 placeholder='Enter Office Location'
@@ -95,7 +95,7 @@ const JobShare = () => {
                         </Grid>
 
                         <Grid item lg={6} sx={{ px: '20px', }}>
-                            <Typography sx={{ fontSize: '14px', mb: '5px' }}>Job Role <span style={{ color: 'red', fontSize: '20px' }}>*</span></Typography>
+                            <Typography component={'span'} sx={{ fontSize: '14px', mb: '5px' }}>Job Role <span style={{ color: 'red', fontSize: '20px' }}>*</span></Typography>
                             <FormControl fullWidth>
                                 <Select size='small'
                                     name="Role"
@@ -116,7 +116,7 @@ const JobShare = () => {
                             </FormControl>
                         </Grid>
                         <Grid item lg={6} sx={{ px: '20px' }}>
-                            <Typography sx={{ fontSize: '14px', mb: '5px' }}>Job Type <span style={{ color: 'red', fontSize: '20px' }}>*</span></Typography>
+                            <Typography component={'span'} sx={{ fontSize: '14px', mb: '5px' }}>Job Type <span style={{ color: 'red', fontSize: '20px' }}>*</span></Typography>
                             <FormControl fullWidth>
                                 <Select size='small'
                                     name="Type"
@@ -135,7 +135,7 @@ const JobShare = () => {
                             </FormControl>
                         </Grid>
                         <Grid item lg={6} sx={{ p: '20px' }}>
-                            <Typography sx={{ fontSize: '14px', mb: '5px' }}>Work Type <span style={{ color: 'red', fontSize: '20px' }}>*</span></Typography>
+                            <Typography component={'span'} sx={{ fontSize: '14px', mb: '5px' }}>Work Type <span style={{ color: 'red', fontSize: '20px' }}>*</span></Typography>
                             <FormControl fullWidth>
                                 <Select size='small'
                                     name="Worktype"
@@ -154,7 +154,7 @@ const JobShare = () => {
                         </Grid>
 
                         <Grid item lg={6} sx={{ p: '20px' }}>
-                            <Typography sx={{ fontSize: '14px', mb: '5px' }}>Last Date for Apply <span style={{ color: 'red', fontSize: '20px' }}></span></Typography>
+                            <Typography component={'span'} sx={{ fontSize: '14px', mb: '5px' }}>Last Date for Apply <span style={{ color: 'red', fontSize: '20px' }}></span></Typography>
 
                             <TextField
                                 size='small'
@@ -169,7 +169,7 @@ const JobShare = () => {
 
                         </Grid>
                         <Grid item lg={12} sx={{ px: '20px' }}>
-                            <Typography sx={{ fontSize: '14px', mb: '5px' }}>Application Link <span style={{ color: 'red', fontSize: '20px' }}>*</span></Typography>
+                            <Typography component={'span'} sx={{ fontSize: '14px', mb: '5px' }}>Application Link <span style={{ color: 'red', fontSize: '20px' }}>*</span></Typography>
                             <TextField
                                 fullWidth
                                 placeholder='Enter url.....'
@@ -182,7 +182,7 @@ const JobShare = () => {
                             />
                         </Grid>
                         <Grid item xs={12} sx={{ p: '20px' }}>
-                            <Typography sx={{ fontSize: '14px', mb: '5px' }}>Required Skills <span style={{ color: 'red', fontSize: '14px' }}>{"[ Skills Should be Seprated by (,) ]"}</span></Typography>
+                            <Typography component={'span'} sx={{ fontSize: '14px', mb: '5px' }}>Required Skills <span style={{ color: 'red', fontSize: '14px' }}>{"[ Skills Should be Seprated by (,) ]"}</span></Typography>
                             <TextField
                                 fullWidth
                                 size='small'
@@ -196,7 +196,7 @@ const JobShare = () => {
                             />
                         </Grid>
                         <Grid item xs={12} sx={{ px: '20px', py: "10px" }}>
-                            <Typography sx={{ fontSize: '14px', mb: '5px' }}>Eligible Batchs <span style={{ color: 'red', fontSize: '14px' }}>{"[Batches Should be Seprated by (,) ]"}</span></Typography>
+                            <Typography component={'span'} sx={{ fontSize: '14px', mb: '5px' }}>Eligible Batchs <span style={{ color: 'red', fontSize: '14px' }}>{"[Batches Should be Seprated by (,) ]"}</span></Typography>
                             <TextField
                                 fullWidth
                                 size='small'
@@ -210,7 +210,7 @@ const JobShare = () => {
                             />
                         </Grid>
                         <Grid item xs={12} sx={{ px: '20px', py: "10px" }}>
-                            <Typography sx={{ fontSize: '14px', mb: '5px' }}>Job Description <span style={{ color: 'red', fontSize: '20px' }}></span></Typography>
+                            <Typography component={'span'} sx={{ fontSize: '14px', mb: '5px' }}>Job Description <span style={{ color: 'red', fontSize: '20px' }}></span></Typography>
                             <TextField
                                 fullWidth
                                 placeholder='Enter Job Description'

@@ -9,19 +9,22 @@ import { Menu } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
 const Navbar = () => {
   const theme = useTheme();
-  const Navigate = useNavigate()
+  const user = useSelector((state) => state.global.user);
   const [value, setvalue] = useState(0)
   var matches = useMediaQuery(theme.breakpoints.down('md'));
   const [position, setposition] = useState(false);
   const [isLoggedIn, setisLoggedIn] = useState(false);
-  const user = useSelector((state) => state.global.user);
+  const Navigate = useNavigate();
   useEffect(() => {
     if (user) {
       setisLoggedIn(true);
+      if(user?.Role==='admin'){
+        Navigate('/admin');
+      }
     } else {
       setisLoggedIn(false);
     }
-  }, [user])
+  }, [user,Navigate])
   return (
     <AppBar boxshadow='10px' sx={{
       background: theme.palette.background.main,
@@ -41,7 +44,7 @@ const Navbar = () => {
           src={logo}
           sx={{ width: 70, height: 50 }}
         ></Box>
-        <Typography sx={{ fontFamily: 'sans-serif', fontWeight: '1000', fontSize: '20px', color: theme.palette.primary.main }}>
+        <Typography component={'span'} sx={{ fontFamily: 'sans-serif', fontWeight: '1000', fontSize: '20px', color: theme.palette.primary.main }}>
           Carrier Friend
         </Typography>
         <Tabs textColor='primary' value={value} onChange={(e, value) => {
@@ -57,7 +60,7 @@ const Navbar = () => {
         {!isLoggedIn ?<Button variant='outlined' color='primary' sx={{fontWeight:"bold",ml:"auto", textTransform:'capitalize'}} onClick={()=>{Navigate('/auth')}} >Login/Signup</Button>
         :<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', ml: 'auto', bgcolor: "grey", py: '5px', px: '10px', borderRadius: '10px' }}>
           <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-          <Typography sx={{ color: 'black', fontWeight: 'bold', fontSize: '15px', pl: '10px' }}>Vipul Kumar</Typography>
+          <Typography component={'span'} sx={{ color: 'black', fontWeight: 'bold', fontSize: '15px', pl: '10px' }}>Vipul Kumar</Typography>
         </Box>}
       </Toolbar>
         : <Toolbar sx={{ display: 'flex', justifyContent: "space-between" }}>
@@ -71,7 +74,7 @@ const Navbar = () => {
               src={logo}
               sx={{ width: 70, height: 50 }}
             ></Box>
-            <Typography sx={{ fontFamily: 'sans-serif', fontWeight: '1000', fontSize: '18px', color: theme.palette.primary.main }}>
+            <Typography component={'span'} sx={{ fontFamily: 'sans-serif', fontWeight: '1000', fontSize: '18px', color: theme.palette.primary.main }}>
               Carrier Friend
             </Typography>
           </Box>

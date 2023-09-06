@@ -20,12 +20,18 @@ const io =new Server(ser)
 
 
 app.use(express.json());
-// app.use(cors());
 
-app.use('*',cors({
-    origin:true,
+
+app.use(cors({
+    origin:"http://localhost:3000",
     credentials:true
 }))
+
+
+
+
+
+
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({policy:'cross-origin'}));
 app.use(morgan("common"));

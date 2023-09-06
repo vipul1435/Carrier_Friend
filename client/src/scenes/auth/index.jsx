@@ -78,10 +78,10 @@ const Auth = () => {
             minWidth: '300px',
             boxshadow: '0px 0px 10px 0px rgba(0,0,0,0.75)',
           }}>
-            <Typography color='white' fontFamily='roboto' fontSize='30px' fontWeight='550'>
+            <Typography component={'span'} color='white' fontFamily='roboto' fontSize='30px' fontWeight='550'>
               {isLogin ? "Welcome Back" : "Join Us Today"}
             </Typography>
-            <Typography color='white' fontFamily='sans-serif' fontSize='16px'>
+            <Typography component={'span'} color='white' fontFamily='sans-serif' fontSize='16px'>
               Enter your email and password
             </Typography>
           </Box>
@@ -100,7 +100,7 @@ const Auth = () => {
             marginY: '20px',
             textTransform: 'none',
           }}>{authStarted ? <CircularProgress size='25px' color="secondary" /> : (isLogin ? "Log In" : "Sign Up")}</Button>
-          <Typography justifyContent='center' display='flex' alignItems='center'>
+          <Typography component={'span'} justifyContent='center' display='flex' alignItems='center'>
             {isLogin ? "Don't have an Account" : "Aleready have an Account?"}  <Button onClick={() => { setisLogin(!isLogin) }} sx={{
               fontWeight: 'bold',
               textTransform: 'none',

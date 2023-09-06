@@ -23,16 +23,17 @@ import Rejected from "scenes/admin/dashboard/rejected";
 import Verified from "scenes/admin/dashboard/verified";
 import Pending from "scenes/admin/dashboard/pending";
 import Statics from "scenes/admin/dashboard/statics";
-
 function App() {
   const dispatch = useDispatch();
   const {data,isLoading} = useVerifyUserQuery();
+  useEffect(()=>{
   if(data && !isLoading){
     dispatch(setUser(data));
+    if(data.role === "admin"){
+    }
   }
-  useEffect(()=>{
     Aos.init();
-  },[])
+  },[data,dispatch,isLoading])
   return (
     <BrowserRouter>
     <ThemeProvider theme={theme}>

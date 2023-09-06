@@ -14,7 +14,7 @@ const FilterVar = ({queryData,setData,}) => {
         }}>
                 <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap' }}>
                     <Tune sx={{ color: theme.palette.primary.main }}></Tune>
-                    <Typography sx={{
+                    <Typography component={'span'} sx={{
                         mx: '5px',
                         fontWeight: 'bold',
                         fontSize: '1.2rem',
@@ -27,7 +27,7 @@ const FilterVar = ({queryData,setData,}) => {
                 <Box sx={{ my: '25px' }}>
                     <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                         <WorkOutline sx={{ color: theme.palette.secondary.main }}></WorkOutline>
-                        <Typography sx={{
+                        <Typography component={'span'} sx={{
                             mx: '5px',
                             fontWeight: '500',
                             fontSize: '15px',
@@ -59,7 +59,7 @@ const FilterVar = ({queryData,setData,}) => {
                 <Box sx={{ my: '25px' }}>
                     <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                         <LocationOn sx={{ color: theme.palette.secondary.main }}></LocationOn>
-                        <Typography sx={{
+                        <Typography component={'span'} sx={{
                             mx: '5px',
                             fontWeight: '500',
                             fontSize: '15px',
@@ -89,7 +89,7 @@ const FilterVar = ({queryData,setData,}) => {
                 <Box sx={{ my: '25px' }}>
                     <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                         <Grade sx={{ color: theme.palette.secondary.main }}></Grade>
-                        <Typography sx={{
+                        <Typography component={'span'} sx={{
                             mx: '5px',
                             fontWeight: '500',
                             fontSize: '15px',
@@ -128,7 +128,7 @@ const FilterVar = ({queryData,setData,}) => {
             <Box mb='4%'>
                 <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
                     <VolunteerActivism sx={{ color: "red", }}></VolunteerActivism>
-                    <Typography sx={{
+                    <Typography component={'span'} sx={{
                         mx: '5px',
                         fontWeight: '500',
                         fontSize: '15px',

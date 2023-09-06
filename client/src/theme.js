@@ -16,6 +16,13 @@ export const  theme = createTheme({
         },
         code:{
             main:"#1c1e29"
+        },
+        admin:{
+            main:{
+                1:"#f8778d",
+                2:"#4346a3",
+                3:'#2ed4e2'
+            }
         }
     }
 });
