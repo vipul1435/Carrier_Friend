@@ -1856,7 +1856,7 @@
     "lodash" "^4.17.21"
     "prop-types" "^15.7.2"
 
-"@nivo/core@0.83.0":
+"@nivo/core@^0.83.0", "@nivo/core@0.83.0":
   "integrity" "sha512-I9fjZAbIPz41JA2WP8Avsud/xk0iiM1nWUzcvZBDebBGFDB5Y1lrldUt9l5kvOeMth3Qj/1lVFTiJxQuojxH4Q=="
   "resolved" "https://registry.npmjs.org/@nivo/core/-/core-0.83.0.tgz"
   "version" "0.83.0"
