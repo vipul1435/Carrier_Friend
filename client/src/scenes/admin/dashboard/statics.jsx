@@ -2,6 +2,7 @@ import { Box, Grid,Paper } from '@mui/material'
 import React from 'react'
 import { styled } from '@mui/material/styles';
 import UserCard from 'components/admin/statics/UserCard';
+import MyResponsivePie from 'components/admin/statics/PieChart';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -19,7 +20,9 @@ const Statics = () => {
           </Item>
         </Grid>
         <Grid item xs={12} lg={7}>
-          <Item>xs=12 lg=4</Item>
+          <Item>
+            <MyResponsivePie/>
+          </Item>
         </Grid>
         <Grid item xs={12} lg={5}>
           <Item>xs=12 lg=4</Item>

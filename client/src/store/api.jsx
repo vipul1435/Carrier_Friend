@@ -56,7 +56,15 @@ export const api = createApi({
             }),
             providesTags:['updateJob']
         }),
+        logout:builder.mutation({
+            query:()=>({
+                url:'/auth/logout',
+                method:'GET',
+                credentials:'include'
+            }),
+            providesTags:['logout']
+        })
     }),
 });
 
-export const {useShareJobMutation,useUserLoginMutation,useUserSignupMutation,useGetJobsQuery,useVerifyUserQuery,useUpdateJobMutation} = api;
+export const {useShareJobMutation,useUserLoginMutation,useUserSignupMutation,useGetJobsQuery,useVerifyUserQuery,useUpdateJobMutation,useLogoutMutation} = api;

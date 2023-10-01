@@ -15,7 +15,7 @@ const JobCard = ({ data }) => {
                             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', border: '1px solid grey', height: '50px', width: '50px', borderRadius: '50%', mr: "5px", mb: '5px', fontSize: 'small' }}>
                                 <WorkOutlineRounded />
                             </Box>
-                            <Box>
+                            <Box sx={{display: 'flex', flexDirection: 'column'}}>
                                 <Typography component={'span'} sx={{ fontSize: '18px', fontWeight: 'bold' }}>{data?.Role}</Typography>
                                 <Typography component={'span'} sx={{ fontSize: '15px', color: 'grey' }}>{data?.Company} | {data?.Type}</Typography>
                             </Box>

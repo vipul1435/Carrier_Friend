@@ -2,7 +2,7 @@ const sidebarItem = [
     {
         icon:"DataThresholding",
         name:"Statics",
-        path:"/admin/statics"
+        path:"/admin"
     },
     {
         icon:"Pending",

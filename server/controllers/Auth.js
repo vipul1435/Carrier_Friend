@@ -77,3 +77,11 @@ export const verifyUser = async (req,res) => {
     }
 }
 
+export const logout = async (req,res)=>{
+    try{
+        res.clearCookie("token");
+        res.status(200).json("Logged Out");
+    } catch{
+        res.status(400).json("Internal Server Error");
+    }
+}

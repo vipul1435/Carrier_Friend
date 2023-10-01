@@ -1,7 +1,7 @@
 import { Box, Paper, Typography, Divider, FormControl, TextField, Grid,CircularProgress ,Button, Select, MenuItem, } from '@mui/material'
 import React, { useState } from 'react';
 import { useTheme } from '@mui/material';
-import { VolunteerActivism } from '@mui/icons-material';
+import { VolunteerActivism,ArrowBack } from '@mui/icons-material';
 import { InitialData } from 'Actions/ShareJobAction'
 import { useShareJobMutation } from 'store/api'
 import { useNavigate } from 'react-router-dom';
@@ -225,6 +225,7 @@ const JobShare = () => {
                             />
                         </Grid>
                         <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'row', alignItems: 'center', mb: '20px', mt: '10px' }}>
+                            <Button variant='contained' sx={{mr:'10px',textTransform:'capitalize'}}><ArrowBack mx={"5px"} onClick={()=>{naviagte("/opportunities",{replace:true})}}/> Back</Button>
                             <Button type="submit" variant="contained" color="primary" sx={{ textTransform: 'capitalize', px: '40px' }} onClick={handleSubmit}>
                                {isClicked ? <CircularProgress size='25px' color="secondary" />:"Share Job"}
                             </Button>

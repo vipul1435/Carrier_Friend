@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Toolbar, Tabs, Typography, Tab, Box, Button, Avatar, useMediaQuery, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Tabs, Typography, Tab, Box, Button, useMediaQuery, IconButton } from "@mui/material";
 import { useTheme } from '@emotion/react';
 import logo from 'assets/logo.png';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,7 @@ import Drawer from './Drawer';
 import { useNavigate } from 'react-router-dom';
 import { Menu } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
+import CustomizedMenus from './menu'
 const Navbar = () => {
   const theme = useTheme();
   const user = useSelector((state) => state.global.user);
@@ -58,9 +59,8 @@ const Navbar = () => {
             label='About US' sx={{ fontWeight: "bold", color: 'black', textTransform: 'capitalize' }} to="/aboutus" component={Link} />
         </Tabs>
         {!isLoggedIn ?<Button variant='outlined' color='primary' sx={{fontWeight:"bold",ml:"auto", textTransform:'capitalize'}} onClick={()=>{Navigate('/auth')}} >Login/Signup</Button>
-        :<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', ml: 'auto', bgcolor: "grey", py: '5px', px: '10px', borderRadius: '10px' }}>
-          <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-          <Typography component={'span'} sx={{ color: 'black', fontWeight: 'bold', fontSize: '15px', pl: '10px' }}>Vipul Kumar</Typography>
+        :<Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', ml: 'auto', py: '5px', px: '10px', borderRadius: '10px' }}>
+          <CustomizedMenus setisLoggedIn={setisLoggedIn}/>
         </Box>}
       </Toolbar>
         : <Toolbar sx={{ display: 'flex', justifyContent: "space-between" }}>

@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@mui/material";
-import {theme} from 'theme';
-import { BrowserRouter, Route , Routes } from "react-router-dom";
+import { theme } from 'theme';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "components/navbar/Navbar"
 import Home from "scenes/home";
 import Opportunities from "scenes/opportunities";
@@ -9,9 +9,9 @@ import Code from "scenes/code";
 import Auth from "scenes/auth";
 import Room from "scenes/room";
 import NavControl from "components/navbar/NavControl";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUser } from "store";
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Aos from "aos";
 import { useEffect } from "react";
@@ -23,51 +23,53 @@ import Rejected from "scenes/admin/dashboard/rejected";
 import Verified from "scenes/admin/dashboard/verified";
 import Pending from "scenes/admin/dashboard/pending";
 import Statics from "scenes/admin/dashboard/statics";
+import AccessDenied from "scenes/Error/AccessDenied";
 function App() {
   const dispatch = useDispatch();
-  const {data,isLoading} = useVerifyUserQuery();
-  useEffect(()=>{
-  if(data && !isLoading){
-    dispatch(setUser(data));
-    if(data.role === "admin"){
+  const { data, isLoading } = useVerifyUserQuery();
+  useEffect(() => {
+    if (data && !isLoading) {
+      dispatch(setUser(data));
+      if (data.role === "admin") {
+      }
     }
-  }
     Aos.init();
-  },[data,dispatch,isLoading])
+  }, [data, dispatch, isLoading])
   return (
     <BrowserRouter>
-    <ThemeProvider theme={theme}>
-    <NavControl>
-      <Navbar/>
-      </NavControl>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
+      <ThemeProvider theme={theme}>
+        <NavControl>
+          <Navbar />
+        </NavControl>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
         />
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/opportunities" element={<Opportunities/>}/>
-        <Route path="/codegroup" element={<Code/>}/>
-        <Route path="/aboutus" element={<About/>}/>
-        <Route path="/auth" element={<Auth/>}/>
-        <Route path='/room/:RoomId' element={<Room/>}/>
-        <Route path='/jobshare' element={<JobShare/>}/>
-        <Route path='/admin' element={<Admin/>}>
-          <Route path="verified" element={<Verified/>}/>
-          <Route path="pending" element={<Pending/>}/>
-          <Route path="rejected" element={<Rejected/>}/>
-          <Route path="statics" element={<Statics/>}/>
-        </Route>
-      </Routes>
-    </ThemeProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/opportunities" element={<Opportunities />} />
+          <Route path="/codegroup" element={<Code />} />
+          <Route path="/aboutus" element={<About />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path='/room/:RoomId' element={<Room />} />
+          <Route path='/jobshare' element={<JobShare />} />
+          <Route path='/denied' element={<AccessDenied />} />
+          <Route path='/admin' element={<Admin />}>
+            <Route path="verified" element={<Verified />} />
+            <Route path="pending" element={<Pending />} />
+            <Route path="rejected" element={<Rejected />} />
+            <Route index element={<Statics />} />
+          </Route>
+        </Routes>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }
