@@ -11,9 +11,9 @@ export const signUp = async (req, res) => {
         res.cookie("token", jwt.sign({ id: user._id, Role: user.Role }, process.env.SIGN, { expiresIn: "5d" }),
             {
                 httpOnly: true,
-                domin:'carrier-friend.netlify.app',
-                sameSite: 'none',
-                secure:true
+                // domin:'https://localhost:5000',
+                // sameSite: 'none',
+                // secure:true
             });
             const newuser = {};
             newuser.Email = user.Email;
@@ -37,7 +37,10 @@ export const logIn = async (req, res) => {
             let bytes = CryptoJS.AES.decrypt(user.Password, process.env.SECRET_KEY);
             let originalPassword = bytes.toString(CryptoJS.enc.Utf8);
             if (originalPassword === req.body.Password) {
-                res.cookie("token", jwt.sign({ id: user._id, Role: user.Role }, process.env.SIGN, { expiresIn: "5d" }), { httpOnly: true,domin:'carrier-friend.netlify.app',sameSite: 'none',secure:true
+                res.cookie("token", jwt.sign({ id: user._id, Role: user.Role }, process.env.SIGN, { expiresIn: "5d" }), { httpOnly: true,
+                    // domin:'https://localhost:5000',
+                    // sameSite: 'none',
+                    // secure:true
             });
                 const newuser = {};
                 newuser.Email = user.Email;
@@ -83,7 +86,12 @@ export const verifyUser = async (req,res) => {
 
 export const logout = async (req,res)=>{
     try{
-        res.clearCookie("token",{domin:'carrier-friend.netlify.app',sameSite: 'none',httpOnly: true,secure:true});
+        res.clearCookie("token",{
+            // domin:'https://localhost:5000',
+            // sameSite: 'none',
+            httpOnly: true,
+            // secure:true
+        });
         res.status(200).json("Logged Out");
     } catch{
         res.status(400).json("Internal Server Error");

@@ -12,6 +12,7 @@ export const postContribute = async (req,res) => {
 
 
 export const getContribute = async (req,res) => {
+    console.log("val")
     try{
         const query = req.query;
         if(!query?.status){
