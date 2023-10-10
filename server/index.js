@@ -21,7 +21,7 @@ const io = new Server(ser)
 app.use(express.json());
 
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "https://carrier-friend.netlify.app",
     credentials: true
 }))
 
